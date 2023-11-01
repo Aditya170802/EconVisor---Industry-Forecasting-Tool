@@ -5,7 +5,7 @@ body {
 }
 
 nav {
-    background-color: #333;
+    background-color: #000000;
     color: #fff;
     text-align: center;
     padding: 10px 0;
@@ -39,8 +39,8 @@ nav a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     position: relative;
+    align-items: center;
     text-align: center;
 }
 
@@ -56,14 +56,23 @@ nav a {
 .introduction-content {
     z-index: 1;
     padding: 20px;
+    margin-top: -80vh;
+    
 }
 
 .introduction-content h1 {
-    font-size: 36px;
+    font-size:10vw;
+    /* margin: 0px; */
+    text-shadow: 0px 0px 30px rgb(0, 0, 0);
+
+    margin-bottom: -20px;
 }
 
 .introduction-content p {
-    font-size: 18px;
+    font-size: 20px;
+    margin-top: 0px;
+    font-family: ui-rounded;
+    color: rgba(253, 253, 253, 0.621);
 }
 
 #prediction, #about, #contact, #how-it-works {

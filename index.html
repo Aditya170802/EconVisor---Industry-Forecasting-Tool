@@ -21,8 +21,43 @@
             Your browser does not support the video tag.
         </video>
         <div class="introduction-content">
-            <h1>Welcome to EconVisor</h1>
-            <p>An application that predicts economic indicators of the Indian economy.</p>
+            <h1>EconVisor</h1>
+            <p></p>
+            <script>
+                // Wait for the page to load before running the JavaScript
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the <p> element to animate
+    const introText = document.querySelector('#introduction p');
+
+    // Text to type
+    const textToType = "An application that predicts economic indicators of the Indian economy.";
+
+    // Initialize variables
+    let textIndex = 0;
+    let cursorVisible = true;
+
+    // Function to toggle cursor visibility
+    function toggleCursor() {
+        cursorVisible = !cursorVisible;
+        introText.innerHTML = textToType.substring(0, textIndex) + (cursorVisible ? '|' : '');
+    }
+
+    // Function to display the text letter by letter
+    function typeText() {
+        if (textIndex < textToType.length) {
+            introText.innerHTML = textToType.substring(0, textIndex + 1) + '|';
+            textIndex++;
+            setTimeout(typeText, 50); // Adjust the typing speed as needed (in milliseconds)
+        } else {
+            setInterval(toggleCursor, 500); // Toggle cursor every 500ms
+        }
+    }
+
+    // Start the typing animation when the page is loaded
+    typeText();
+});
+
+            </script>
         </div>
     </section>
     
