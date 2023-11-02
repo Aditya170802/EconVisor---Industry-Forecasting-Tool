@@ -7,14 +7,22 @@
     <title>EconVisor - Economic Indicator Predictor</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#prediction">Prediction</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-        </ul>
-    </nav>
+<!-- hamburger -->
+<input type="checkbox" id="navi-toggle" class="checkbox" />
+<label for="navi-toggle" class="button">
+  <span class="icon">&nbsp;</span>
+</label>
+<div class="background">&nbsp;</div>
+
+<!-- nav -->
+<nav class="nav">
+  <ul class="list">
+        <li class="item"><a href="#prediction" class="link">Prediction</a></li>
+        <li class="item"><a href="#about" class="link">About</a></li>
+        <li class="item"><a href="#contact" class="link">Contact</a></li>
+        <li class="item"><a href="#how-it-works" class="link">How It Works</a></li>
+    </ul>
+</nav>
     <section id="introduction" class="fullscreen-section">
         <video autoplay muted loop poster="your-poster-image.jpg">
             <source src="backv.mp4" type="video/mp4">
@@ -23,41 +31,7 @@
         <div class="introduction-content">
             <h1>EconVisor</h1>
             <p></p>
-            <script>
-                // Wait for the page to load before running the JavaScript
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the <p> element to animate
-    const introText = document.querySelector('#introduction p');
 
-    // Text to type
-    const textToType = "An application that predicts economic indicators of the Indian economy.";
-
-    // Initialize variables
-    let textIndex = 0;
-    let cursorVisible = true;
-
-    // Function to toggle cursor visibility
-    function toggleCursor() {
-        cursorVisible = !cursorVisible;
-        introText.innerHTML = textToType.substring(0, textIndex) + (cursorVisible ? '|' : '');
-    }
-
-    // Function to display the text letter by letter
-    function typeText() {
-        if (textIndex < textToType.length) {
-            introText.innerHTML = textToType.substring(0, textIndex + 1) + '|';
-            textIndex++;
-            setTimeout(typeText, 50); // Adjust the typing speed as needed (in milliseconds)
-        } else {
-            setInterval(toggleCursor, 500); // Toggle cursor every 500ms
-        }
-    }
-
-    // Start the typing animation when the page is loaded
-    typeText();
-});
-
-            </script>
         </div>
     </section>
     
@@ -65,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <section id="prediction" class="fullscreen-section">
         <div class="prediction-container">
             <form id="economic-predictor-form">
-                <h2>Predict Economic Indicators</h2>
+                <h2 style="color: beige;">Predict Economic Indicators</h2>
                 <div class="input-container">
                     <label for="industry-type">Select Industry Type:</label>
                     <select id="industry-type" name="industry-type">
@@ -97,15 +71,76 @@ document.addEventListener('DOMContentLoaded', function () {
         <h2>Economic Indicator Predictions</h2>
         <p>The predicted economic indicators for your selection will be displayed here.</p>
     </section> -->
-    <section id="about">
-        <!-- Content for the "About" section -->
+    <section id="about" class="fullscreen-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>We are a passionate team dedicated to providing innovative solutions for economic forecasting and analysis. Our mission is to make complex economic data accessible and understandable for everyone.</p>
+                <p>With years of experience in the field, we strive to deliver accurate predictions and valuable insights to help businesses and individuals make informed decisions.</p>
+            </div>
+            <div class="about-image">
+                <!-- Add a decorative image here -->
+                <img src="http://www.albawaba.com/sites/default/files/im/Business/Job_Market_Success/teamwork-hands-shutterstock_288464495.jpg" alt="About Us Image">
+            </div>
+        </div>
     </section>
-    <section id="contact">
-        <!-- Content for the "Contact" section -->
+    
+    <section id="how-it-works" class="fullscreen-section">
+        <div class="how-it-works-cards">
+            <div class="how-it-works-card">
+                <img src="https://www.datascienceblog.net/post/data-visualization/lineplot_files/figure-html/unnamed-chunk-4-1.png" alt="Card 1 Image">
+                <h3>Feature 1</h3>
+                <p>Discover how Feature 1 works and its benefits.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.zZW05tRauWstK89Elvq23gHaEK&pid=Api&P=0&h=180" alt="Card 2 Image">
+                <h3>Feature 2</h3>
+                <p>Explore Feature 2 and its applications.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.nGZu_Osz8FZz0wFLQnqboAHaEK&pid=Api&P=0&h=180" alt="Card 3 Image">
+                <h3>Feature 3</h3>
+                <p>Learn about Feature 3 and its impact on your analysis.</p>
+                <button>See How It Works</button>
+            </div>
+        </div>
     </section>
-    <section id="how-it-works">
-        <!-- Content for the "How It Works" section -->
+    
+    <section id="References" class="fullscreen-section">
+        <ul class="references-list">
+            <li>
+                <span class="reference-title"><a href="research_paper1.pdf" target="_blank">Research Paper 1</a></span>
+                <span class="reference-author">by Author 1</span>
+            </li>
+            <li>
+                <span class="reference-title"><a href="research_paper2.pdf" target="_blank">Research Paper 2</a></span>
+                <span class="reference-author">by Author 2</span>
+            </li>
+            <!-- Add more references as needed -->
+        </ul>
     </section>
+    
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="footer_logo.png" alt="Company Logo">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2023 Your Company. All rights reserved.</p>
+                <p>Contact: contact@yourcompany.com</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><img src="facebook_icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter_icon.png" alt="Twitter"></a>
+                <a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
+    
+    
     <script src="script.js"></script>
 </body>
 </html>
