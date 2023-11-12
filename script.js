@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menu.style.display = "block";
         close.style.display = "block";
         hamburger.style.display = "none";
+        
     });
 
     close.addEventListener("click", function () {

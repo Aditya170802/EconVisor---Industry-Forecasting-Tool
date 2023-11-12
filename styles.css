@@ -28,8 +28,8 @@ body {
     width: 2.5rem;
     border-radius: 50%;
     position: fixed;
-    top: 5.5vh; 
-    right: 5.5vw; 
+    top: 5.3vh; 
+    right: 5.2vw; 
     background-image: radial-gradient(rgb(0, 0, 0), rgb(55, 55, 55));
     z-index: 1000;
   
@@ -59,7 +59,8 @@ body {
   
   .list a{
     /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
-    font-family: ui-rounded;
+    font-family: 'Comfortaa', sans-serif;
+
 
   }
   
@@ -187,24 +188,102 @@ body {
 .introduction-content {
     z-index: 1;
     padding: 20px;
-    margin-top: -80vh;
     
 }
 
-.introduction-content h1 {
+#introduction-content-h1 {
+  text-decoration: none;
     font-size:10vw;
     /* margin: 0px; */
     text-shadow: 0px 0px 30px rgb(0, 0, 0);
 color:rgba(255, 255, 255, 0.862);
     margin-bottom: -20px;
 }
-
+#introduction-content-h1:hover{
+color: #00de9c;
+}
 .introduction-content p {
-    font-size: 20px;
-    margin-top: 0px;
-    font-family: ui-rounded;
+  font-family: 'Comfortaa', sans-serif;
+
+    font-size: 1.3vw;
+    margin-top: -4vh;
     color: rgba(253, 253, 253, 0.621);
 }
+.gotopredict{
+  z-index: 1;
+  margin-top: 43vh;
+  margin-bottom: 17vh;
+  padding: 15px;
+  width: 8vw;
+}
+.gotopredict a{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  font-family: 'Comfortaa', sans-serif;
+
+}
+.gotopredict{
+  border: none;
+  outline: none;
+  background: #ffffff;
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+
+  .gotopredict:hover
+  {
+  background-color: rgb(7, 7, 7);
+  }
+  .gotopredict:hover a
+  {
+  color: black;
+  }
+
+  .gotopredict:before {
+  content: "";
+  background: linear-gradient(
+  45deg,
+  #ff0000,
+  #ff7300,
+  #fffb00,
+  #48ff00,
+  #00ffd5,
+  #002bff,
+  #7a00ff,
+  #ff00c8,
+  #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  }
+  
+  @keyframes glowing-button-85 {
+  0% {
+  background-position: 0 0;
+  }
+  50% {
+  background-position: 400% 0;
+  }
+  100% {
+  background-position: 0 0;
+  }
+  }
 
 #prediction {
     background-color: #333;
@@ -218,39 +297,84 @@ color:rgba(255, 255, 255, 0.862);
     align-items: center;
 }
 
-.prediction-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .input-container {
-    flex: 1;
-    margin: 10px;
-    text-align: left;
-    color: black;
+
+    color: rgb(255, 255, 255);
 }
 
-#prediction select,
-#prediction input {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
+#prediction select{
+    width: 400px;
+    padding: 15px 15px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: auto;
+    margin-bottom: 30px;
+    font-family: 'Comfortaa', sans-serif;
+
+
+}
+#economic-predictor-form select option {
+  background-color: #009c73; /* Set your desired background color for options */
+  color: white;
+  font-size: 22px;
+  padding: 5px;/* Set your desired font color for options */
+}
+#economic-predictor-form select::selection,
+#economic-predictor-form select::-ms-value  {
+  background-color: black;}
+#prediction input{
+  margin: auto;
+  width: 400px;
+  padding: 15px 0px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: 'Comfortaa', sans-serif;
+}
+#economic-predictor-form label{
+  color: rgba(245, 245, 245, 0.638);
+  font-size:x-large;
+  display: block;
+  font-family: 'Comfortaa', sans-serif;
+}
+  .prediction-container h2{
+    color: beige;
+  font-size: 3vw;
+}
+
+#economic-predictor-form{
+  display: grid;
+  justify-content: center;
+  padding: 50px;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 500px;
+  margin: auto;
+
 }
 
 #prediction button {
     background-color: #00de9c;
     color: #fff;
     border: none;
-    padding: 15px 20px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 25px;
     border-radius: 5px;
-    margin-left: auto; /* Shift the button to the right */
+    width:fit-content;
+    margin:auto;
+    margin-top: 25px;
+  font-family: 'Comfortaa', sans-serif;
+
+}
+.predictbtn:hover{
+  background-color: transparent;
+  color: #00de9c; 
+  border: 1px solid #00de9c;
+  box-shadow: 0px 0px 20px 2px #00de9c;
 }
 #about {
     background-color: #efefef;
