@@ -64,7 +64,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const subsectors = {
         agriculture: ["None", "Subsector A1", "Subsector A2", "Subsector A3"],
         service: ["None", "Subsector S1", "Subsector S2", "Subsector S3"],
-        manufacture: ["None", "Subsector M1", "Subsector M2", "Subsector M3"],
+        manufacture: ['None', 'Automobiles',
+        'Chemicals',
+        'Constuction',
+        'Electricity',
+        'Electronics and Appliances',
+        'Food Processing',
+        'Gas',
+        'Mining',
+        'Pharmaceuticals',
+        'Steel',
+        'Textiles'],
         others: ["None", "Subsector O1", "Subsector O2", "Subsector O3"],
     };
 
