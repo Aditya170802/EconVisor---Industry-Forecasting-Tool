@@ -62,10 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Define subsectors for each major sector (customize as needed)
     const subsectors = {
-        agriculture: ["Subsector A1", "Subsector A2", "Subsector A3"],
-        service: ["Subsector S1", "Subsector S2", "Subsector S3"],
-        manufacture: ["Subsector M1", "Subsector M2", "Subsector M3"],
-        others: ["Subsector O1", "Subsector O2", "Subsector O3"],
+        agriculture: ["None", "Subsector A1", "Subsector A2", "Subsector A3"],
+        service: ["None", "Subsector S1", "Subsector S2", "Subsector S3"],
+        manufacture: ["None", "Subsector M1", "Subsector M2", "Subsector M3"],
+        others: ["None", "Subsector O1", "Subsector O2", "Subsector O3"],
     };
 
     // Function to update subsector options

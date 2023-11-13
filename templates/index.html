@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     
     <title>EconVisor - Economic Indicator Predictor</title>
@@ -28,9 +28,9 @@
     </ul>
 </nav>
     <section id="introduction" class="fullscreen-section">
-        <video autoplay muted loop poster="your-poster-image.jpg">
-            <source src="backv.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+        <video autoplay muted loop poster="poster-image.jpg">
+            <source src="{{ url_for('static', filename='contents/backv.mp4') }}" type="video/mp4">
+            Browser does not support the video tag.
         </video>
         <div class="introduction-content">
             <h1><a href="#about" id="introduction-content-h1">EconVisor</a></h1>
@@ -44,7 +44,7 @@
     <section id="prediction" class="fullscreen-section">
         <div class="prediction-container">
             <h2>Predict Economic Indicators</h2>
-            <form id="economic-predictor-form" >
+            <form id="economic-predictor-form" action="{{ url_for('economic_predictor') }}" method="post">
 
                 <div class="input-container">
                     <label for="industry-type">Select Industry Type:</label>
@@ -64,7 +64,16 @@
                 </div>
                 <div class="input-container">
                     <label for="year">Select Year:</label>
-                    <input type="number" id="year" name="year" min="1990" max="2080">
+                    <input type="number" id="year" name="year" min="2010" max="2050" required>
+                </div>
+
+                <div class="modelsel">
+                    <select id="select-model" name="select-model" required style="width: 240px;">
+                        <option value="" disabled selected>*Select a Model</option>
+                        <option value="model1">Model 1</option>
+                        <option value="model2">Model 2</option>
+                        <option value="model3">Model 3</option>
+                    </select>
                 </div>
                     <button type="submit" class="predictbtn">Predict</button>
             </form>
@@ -146,7 +155,7 @@
     </footer>
     
     
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
 

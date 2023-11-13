@@ -214,7 +214,7 @@ color: #00de9c;
   margin-top: 43vh;
   margin-bottom: 17vh;
   padding: 15px;
-  width: 8vw;
+  width: fit-content;
 }
 .gotopredict a{
   text-decoration: none;
@@ -355,6 +355,16 @@ color: #00de9c;
   margin: auto;
 
 }
+.modelsel{
+  position: relative;
+  top: -164px;
+  left: 548px;
+}
+.modelsel select{
+  width: 240px;
+  background-color: rgba(0, 42, 255, 0);
+  color: white;
+}
 
 #prediction button {
     background-color: #00de9c;
@@ -366,7 +376,7 @@ color: #00de9c;
     border-radius: 5px;
     width:fit-content;
     margin:auto;
-    margin-top: 25px;
+    margin-top: -65px;
   font-family: 'Comfortaa', sans-serif;
 
 }
