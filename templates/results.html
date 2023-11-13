@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="prediction-results" class="fullscreen-section infographics" >
+        <div class="title">
+            <h2>The Prediction Infographics</h2>
+            <p>Here are some predicted economic indicators, like Production, Economy Generated, Employement, and GDP contribution</p>
+        </div>
+        <div class="content-container">
+            <div class="half">
+                <div class="chart">
+                    <img src="x.jpg" alt="Infographic chart">
+                </div>
+            </div>
+            <div class="half">
+                <div class="text">
+                    <p name="Production" id="Production">Production is to change by x%</p>
+                    <p name="Economy" id="Economy">Economy is to change by x%</p>
+                    <p name="Employement" id="Employement">Employement is to be change by x%</p>
+                    <p name="GDP Contribution" id="GDP Contribution">GDP contibution is to change by x%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+          <style>
+.fullscreen-section {
+    height: 100vh; /* Make this section cover the whole screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#prediction-results {
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-container {
+    display: flex;
+    flex: 1;
+}
+
+.half {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within each half */
+    justify-content: center; /* Center items vertically within each half */
+}
+
+.chart,
+.text {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.chart img {
+    max-width: 100%;
+    height: auto;
+}
+          </style>
+</body>
+</html>

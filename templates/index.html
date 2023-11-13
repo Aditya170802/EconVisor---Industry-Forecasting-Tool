@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+    
+    <title>EconVisor - Economic Indicator Predictor</title>
+</head>
+<body>
+<!-- hamburger -->
+<input type="checkbox" id="navi-toggle" class="checkbox" />
+
+<label for="navi-toggle" class="button">
+    <p id="navigate" style="margin-left: -170px; font-size: 22px; margin-top: 15px; color: rgba(255, 255, 255, 0.568);     font-family: 'Comfortaa', sans-serif;;">Navigate</p>
+  <span class="icon">&nbsp;</span>
+</label>
+<div class="background">&nbsp;</div>
+
+<!-- nav -->
+<nav class="nav">
+  <ul class="list">
+        <li class="item"><a href="#prediction" class="link">Prediction</a></li>
+        <li class="item"><a href="#about" class="link">About</a></li>
+        <li class="item"><a href="#contact" class="link">Contact</a></li>
+        <li class="item"><a href="#how-it-works" class="link">How It Works</a></li>
+    </ul>
+</nav>
+    <section id="introduction" class="fullscreen-section">
+        <video autoplay muted loop poster="poster-image.jpg">
+            <source src="{{ url_for('static', filename='contents/backv.mp4') }}" type="video/mp4">
+            Browser does not support the video tag.
+        </video>
+        <div class="introduction-content">
+            <h1><a href="#about" id="introduction-content-h1">EconVisor</a></h1>
+            <p></p>
+
+        </div>
+        <button class="gotopredict"><a href="#prediction">Lets Predict</a></button> 
+    </section>
+    
+    
+    <section id="prediction" class="fullscreen-section">
+        <div class="prediction-container">
+            <h2>Predict Economic Indicators</h2>
+            <form id="economic-predictor-form" action="{{ url_for('economic_predictor') }}" method="post">
+
+                <div class="input-container">
+                    <label for="industry-type">Select Industry Type:</label>
+                    <select id="industry-type" name="industry-type">
+                        <option value="agriculture">Agriculture</option>
+                        <option value="service">Service</option>
+                        <option value="manufacture">Manufacture</option>
+                        <option value="others">Others</option>
+                        <option value="india">India as a whole</option>
+                    </select>
+                </div>
+                <div class="input-container" id="subsectors" style="display: none;">
+                    <label for="subsector">Select Subsector (if applicable):</label>
+                    <select id="subsector" name="subsector">
+                        <!-- Subsector options will be dynamically added here -->
+                    </select>
+                </div>
+                <div class="input-container">
+                    <label for="year">Select Year:</label>
+                    <input type="number" id="year" name="year" min="2010" max="2050" required>
+                </div>
+
+                <div class="modelsel">
+                    <select id="select-model" name="select-model" required style="width: 240px;">
+                        <option value="" disabled selected>*Select a Model</option>
+                        <option value="model1">Model 1</option>
+                        <option value="model2">Model 2</option>
+                        <option value="model3">Model 3</option>
+                    </select>
+                </div>
+                    <button type="submit" class="predictbtn">Predict</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+    <section id="about" class="fullscreen-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>We are a passionate team dedicated to providing innovative solutions for economic forecasting and analysis. Our mission is to make complex economic data accessible and understandable for everyone.</p>
+                <p>With years of experience in the field, we strive to deliver accurate predictions and valuable insights to help businesses and individuals make informed decisions.</p>
+            </div>
+            <div class="about-image">
+                <!-- Add a decorative image here -->
+                <img src="http://www.albawaba.com/sites/default/files/im/Business/Job_Market_Success/teamwork-hands-shutterstock_288464495.jpg" alt="About Us Image">
+            </div>
+        </div>
+    </section>
+
+    
+    
+    <section id="how-it-works" class="fullscreen-section">
+        <div class="how-it-works-cards">
+            <div class="how-it-works-card">
+                <img src="https://www.datascienceblog.net/post/data-visualization/lineplot_files/figure-html/unnamed-chunk-4-1.png" alt="Card 1 Image">
+                <h3>Feature 1</h3>
+                <p>Discover how Feature 1 works and its benefits.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.zZW05tRauWstK89Elvq23gHaEK&pid=Api&P=0&h=180" alt="Card 2 Image">
+                <h3>Feature 2</h3>
+                <p>Explore Feature 2 and its applications.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.nGZu_Osz8FZz0wFLQnqboAHaEK&pid=Api&P=0&h=180" alt="Card 3 Image">
+                <h3>Feature 3</h3>
+                <p>Learn about Feature 3 and its impact on your analysis.</p>
+                <button>See How It Works</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="References" class="fullscreen-section">
+        <ul class="references-list">
+            <li>
+                <span class="reference-title"><a href="research_paper1.pdf" target="_blank">Research Paper 1</a></span>
+                <span class="reference-author">by Author 1</span>
+            </li>
+            <li>
+                <span class="reference-title"><a href="research_paper2.pdf" target="_blank">Research Paper 2</a></span>
+                <span class="reference-author">by Author 2</span>
+            </li>
+            <!-- Add more references as needed -->
+        </ul>
+    </section>
+    
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="footer_logo.png" alt="Company Logo">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2023 Your Company. All rights reserved.</p>
+                <p>Contact: contact@yourcompany.com</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><img src="facebook_icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter_icon.png" alt="Twitter"></a>
+                <a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
