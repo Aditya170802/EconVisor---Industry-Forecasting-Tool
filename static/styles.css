@@ -286,7 +286,7 @@ color: #00de9c;
   }
 
 #prediction {
-    background-color: #333;
+    background-color: #161616;
     padding: 40px;
 }
 
@@ -302,7 +302,18 @@ color: #00de9c;
 
     color: rgb(255, 255, 255);
 }
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
 
+/* Style the select to make it visually appealing */
+select::-ms-expand {
+  display: none;
+}
 #prediction select{
     width: 400px;
     padding: 15px 15px;
@@ -312,13 +323,14 @@ color: #00de9c;
     margin: auto;
     margin-bottom: 30px;
     font-family: 'Comfortaa', sans-serif;
-
+    color: #c3ff019e;
+    background-color: #00000094;
 
 }
 #economic-predictor-form select option {
-  background-color: #009c73; /* Set your desired background color for options */
+  background-color: #000000; /* Set your desired background color for options */
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   padding: 5px;/* Set your desired font color for options */
 }
 #economic-predictor-form select::selection,
@@ -333,6 +345,9 @@ color: #00de9c;
   border-radius: 5px;
   font-size: 20px;
   font-family: 'Comfortaa', sans-serif;
+  color: #c3ff019e;
+  background-color: #00000094;
+  text-align: center;
 }
 #economic-predictor-form label{
   color: rgba(245, 245, 245, 0.638);
@@ -348,11 +363,12 @@ color: #00de9c;
 #economic-predictor-form{
   display: grid;
   justify-content: center;
-  padding: 50px;
+  padding: 40px;
   border: 1px solid white;
   border-radius: 15px;
   width: 500px;
   margin: auto;
+  background-color: #41414159;
 
 }
 .modelsel{
@@ -367,7 +383,7 @@ color: #00de9c;
 }
 
 #prediction button {
-    background-color: #00de9c;
+    background-color: #00b57c;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -439,7 +455,7 @@ color: #00de9c;
 }
 
 #how-it-works {
-    background-color: #333; /* Dark gray background */
+    background-color: #161616; /* Dark gray background */
     color: #fff; /* White text color */
     padding: 60px;
     text-align: center;

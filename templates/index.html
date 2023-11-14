@@ -49,28 +49,39 @@
                 <div class="input-container">
                     <label for="industry-type">Select Industry Type:</label>
                     <select id="industry-type" name="industry-type">
-                        <option value="agriculture">Agriculture</option>
-                        <option value="service">Service</option>
-                        <option value="manufacture">Manufacture</option>
-                        <option value="others">Others</option>
-                        <option value="india">India as a whole</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Service">Service</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Others">Others</option>
+                        <option value="India">India Overall</option>
                     </select>
                 </div>
-                <div class="input-container" id="subsectors" style="display: none;">
+                <div class="input-container" id="subsectors"style="display: none;">
                     <label for="subsector">Select Subsector (if applicable):</label>
-                    <select id="subsector" name="subsector">
+                    <select id="subsector" name="subsector" >
                         <!-- Subsector options will be dynamically added here -->
                     </select>
                 </div>
-                <div class="input-container">
+                <div class="input-container" style="display: grid; grid-template-columns: 200px 200px; column-gap: 20px;">
+                    <div>
                     <label for="year">Select Year:</label>
-                    <input type="number" id="year" name="year" min="2010" max="2050" required>
+                    <input type="number" id="year" name="year" min="2010" max="2050" required style="width: 180px;">
                 </div>
+                <div>
+                    <label for="quarter">Select Quarter:</label>
+                    <select id="quarter" name="quarter" required style="width: 180px;">
+                        <option value="Q1">Q1</option>
+                        <option value="Q2">Q2</option>
+                        <option value="Q3">Q3</option>
+                        <option value="Q4">Q4</option>
+                    </select>
+                </div>
+            </div>
 
                 <div class="modelsel">
-                    <select id="select-model" name="select-model" required style="width: 240px;">
+                    <select id="select-model" name="select-model" required style="width: 240px;" >
                         <option value="" disabled selected>*Select a Model</option>
-                        <option value="model1">Model 1</option>
+                        <option value="RandomForest">RandomForest</option>
                         <option value="model2">Model 2</option>
                         <option value="model3">Model 3</option>
                     </select>
