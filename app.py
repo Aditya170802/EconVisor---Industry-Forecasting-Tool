@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from RF_Model import RFPredictor
 import pandas as pd
+from Arima_Model import ARIMAModel
 app = Flask(__name__)
 
 
@@ -36,6 +37,21 @@ def predict_economic_data(form_data):
             xl = f'{xl1} {key} Forecast Plot'
             yl = f'{key}'
             linear_reg_predictor.create_and_save_plot(target_index=i-1, xl=xl, yl=yl, save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png', future_date_str=future_date_str, predicted_value=predicted_value)
+
+        return predictions
+
+    elif selected_model == 'ARIMA':
+        predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
+        imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
+        for i in range(1, 5):
+            arima_model_instance = ARIMAModel(file, i)
+            predicted_value, perc = arima_model_instance.forecast_data(year, quarter)
+            key = list(predictions.keys())[i-1]
+            predictions[key][0] = predicted_value
+            predictions[key][1] = perc
+            xl = f'{xl1} {key} Forecast Plot'
+            yl = f'{key}'
+            arima_model_instance.create_and_save_plot(target_index=i-1, xl=xl, yl=yl, save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png', year=year, quarter=quarter, predicted_value=predicted_value)  
 
         return predictions
     
