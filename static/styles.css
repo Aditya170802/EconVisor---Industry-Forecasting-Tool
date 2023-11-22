@@ -30,7 +30,7 @@ body {
     position: fixed;
     top: 5.3vh; 
     right: 5.2vw; 
-    background-image: radial-gradient(rgb(0, 0, 0), rgb(55, 55, 55));
+    background-image: radial-gradient(rgba(0, 0, 0, 0.923), rgb(55, 55, 55));
     z-index: 1000;
   
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -218,71 +218,41 @@ color: #00de9c;
 }
 .gotopredict a{
   text-decoration: none;
-  color: white;
+  color: rgba(0, 0, 0, 0.832);
   font-size: 25px;
-  font-weight: 400;
+  font-weight: 600;
   font-family: 'Comfortaa', sans-serif;
 
 }
 .gotopredict{
-  border: none;
   outline: none;
-  background: #ffffff;
+  background: #d0d0d0e1;
   cursor: pointer;
   position: relative;
   border-radius: 10px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: all 0.3s ease;
   }
-
+.gotopredict:hover a{
+  color: white;
+}
   .gotopredict:hover
   {
-  background-color: rgb(7, 7, 7);
-  }
-  .gotopredict:hover a
-  {
-  color: black;
+  background-color: #00b57c;
+  transform: scale(1.1);
+  border-color: whitesmoke;
   }
 
+
   .gotopredict:before {
-  content: "";
-  background: linear-gradient(
-  45deg,
-  #ff0000,
-  #ff7300,
-  #fffb00,
-  #48ff00,
-  #00ffd5,
-  #002bff,
-  #7a00ff,
-  #ff00c8,
-  #ff0000
-  );
   position: absolute;
   top: -2px;
   left: -2px;
   background-size: 400%;
   z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-button-85 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
-  }
-  
-  @keyframes glowing-button-85 {
-  0% {
-  background-position: 0 0;
-  }
-  50% {
-  background-position: 400% 0;
-  }
-  100% {
-  background-position: 0 0;
-  }
   }
 
 #prediction {
@@ -402,11 +372,6 @@ select::-ms-expand {
   border: 1px solid #00de9c;
   box-shadow: 0px 0px 20px 2px #00de9c;
 }
-#about {
-    background-color: #efefef;
-    color: #fff;
-    padding: 40px;
-}
 
 
 .split-screen {
@@ -425,9 +390,11 @@ select::-ms-expand {
     padding: 20px;
 }
 #about {
-    background-color: #f7f7f7; /* Light gray background */
-    color: #333; /* Dark text color */
+    background-color: #161616; /* Light gray background */
+    color: #a0a0a0; /* Dark text color */
     padding: 60px;
+      font-family: 'Comfortaa', sans-serif;
+
 }
 
 .about-container {
@@ -470,8 +437,12 @@ select::-ms-expand {
 
 .how-it-works-card {
     flex: 1;
-    background-color: #444; /* Slightly lighter gray background */
+    background-color: #41414159;
+    /* Slightly lighter gray background */
     padding: 20px;
+    font-family: 'Comfortaa', sans-serif;
+    border: 1px solid white;
+
     text-align: center;
     border-radius: 10px; /* Add rounded corners to the cards */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow to the cards */
@@ -491,12 +462,12 @@ select::-ms-expand {
 }
 
 .how-it-works-card h3 {
-    color: #00de9c; /* Green text color for card titles */
+    color: #00b57c; /* Green text color for card titles */
     margin-top: 10px; /* Add spacing above the title */
 }
 
 .how-it-works-card button {
-    background-color: #00de9c;
+    background-color: #00b57c;
     color: #fff;
     border: none;
     padding: 10px 20px; /* Adjust button padding */
@@ -511,12 +482,12 @@ select::-ms-expand {
 
 
 #References {
-    background-color: #f7f7f7; /* Light gray background */
+    background-color: #161616; /* Light gray background */
     color: #333; /* Dark text color */
     padding: 60px;
 }
 
-.references-list {
+.references-list, .sources-list {
     list-style: none;
     padding: 0;
 }
@@ -532,19 +503,39 @@ select::-ms-expand {
     font-weight: bold;
     font-size: 18px; /* Increase font size for the titles */
 }
+.sources-list li {
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Add a border around each reference for separation */
+    padding: 10px;
+    border-radius: 5px; /* Add rounded corners to the references */
+}
+
+.source-title {
+    font-weight: bold;
+    font-size: 18px; /* Increase font size for the titles */
+}
 
 .reference-author {
     color: #666; /* Slightly lighter text color for authors */
     font-size: 14px; /* Adjust font size for authors */
 }
+
+#contact{
+  background-color: #161616; /* Light gray background */
+  color: #333; /* Dark text color */
+  padding: 60px;
+}
+
 footer {
-    background-color: #333; /* Dark background color for the footer */
+    background-color: #000000; /* Dark background color for the footer */
     color: #fff; /* White text color */
     padding: 20px 0;
     text-align: center;
 }
 
 .footer-content {
+  font-family: 'Comfortaa', sans-serif;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

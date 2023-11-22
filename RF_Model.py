@@ -96,38 +96,7 @@ class RFPredictor:
         return ((y2 - y1) / y1) * 100
     
 
-    def plot_data_with_prediction(self, target_index, xl, yl, future_date_str, predicted_value):
-        # Use a dark theme
-        plt.style.use('dark_background')
 
-        # Plot historical data
-        plt.figure(figsize=(10, 6))
-        plt.plot(self.df.index, self.df[self.df.columns[target_index]], label='Historical Data', marker='o', color='lightblue', linestyle='-')
-
-        # Plot predicted future value
-        future_date_str = self.convert_quarter_to_date(future_date_str)
-        future_date = pd.to_datetime(future_date_str)
-
-        plt.scatter(future_date, predicted_value, color='red', label='Predicted Future Value', zorder=5)
-
-        # Annotate the predicted value on the plot
-        plt.text(future_date, predicted_value, f'{predicted_value:.2f}', color='red', ha='left', va='bottom', fontsize=10, bbox=dict(facecolor='black', edgecolor='none', boxstyle='round,pad=0.3'))
-
-        # Customize plot aesthetics
-        plt.title(xl, fontsize=14, color='white')
-        plt.xlabel('Year', fontsize=12, color='white')
-        plt.ylabel(yl, fontsize=12, color='white')
-        plt.legend(fontsize=10)
-        plt.grid(True, color='gray', linestyle='--', alpha=0.5)
-
-        # Customize tick parameters
-        plt.tick_params(axis='both', which='both', colors='white')
-        return plt.gcf()
-
-    def create_and_save_plot(self, target_index, xl, yl, save_path, future_date_str, predicted_value):
-        plot = self.plot_data_with_prediction(target_index, xl, yl, future_date_str=future_date_str, predicted_value=predicted_value)
-        plot.savefig(save_path)
-        plt.close() 
 
 
 

@@ -13,7 +13,6 @@
 <input type="checkbox" id="navi-toggle" class="checkbox" />
 
 <label for="navi-toggle" class="button">
-    <p id="navigate" style="margin-left: -170px; font-size: 22px; margin-top: 15px; color: rgba(255, 255, 255, 0.568);     font-family: 'Comfortaa', sans-serif;;">Navigate</p>
   <span class="icon">&nbsp;</span>
 </label>
 <div class="background">&nbsp;</div>
@@ -33,14 +32,56 @@
             Browser does not support the video tag.
         </video>
         <div class="introduction-content">
-            <h1><a href="#about" id="introduction-content-h1">EconVisor</a></h1>
+            <h1><a href="#about" id="introduction-content-h1">Econ<span style="color: #00b57c;">Visor</span></a></h1>
             <p></p>
 
         </div>
         <button class="gotopredict"><a href="#prediction">Lets Predict</a></button> 
     </section>
     
+
+
+    <section id="about" class="fullscreen-section">
+        <div class="about-container">
+            <div class="about-text">
+                <div class="about-logo">
+                    <img src="{{ url_for('static', filename='contents/companylogo.png') }}" alt="Company Logo" style="max-height: 70px; margin: 20px auto;">
+                </div>
+                <h2 style="color: #c3ff019e;">About Us</h2>
+                <p>We are a passionate team dedicated to providing innovative solutions for economic forecasting and analysis. Our mission is to make complex economic data accessible and understandable for everyone.</p>
+                <p>With years of experience in the field, we strive to deliver accurate predictions and valuable insights to help businesses and individuals make informed decisions.</p>
+            </div>
+            <div class="about-image">
+                <!-- Add a decorative image here -->
+                <img src="{{ url_for('static', filename='contents/teamp.jpg') }}" alt="About Us Image">
+            </div>
+        </div>
+    </section>
+
     
+    <section id="how-it-works" class="fullscreen-section">
+        <div class="how-it-works-cards">
+            <div class="how-it-works-card">
+                <img src="https://www.datascienceblog.net/post/data-visualization/lineplot_files/figure-html/unnamed-chunk-4-1.png" alt="Card 1 Image">
+                <h3>Feature 1</h3>
+                <p>Discover how Feature 1 works and its benefits.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.zZW05tRauWstK89Elvq23gHaEK&pid=Api&P=0&h=180" alt="Card 2 Image">
+                <h3>Feature 2</h3>
+                <p>Explore Feature 2 and its applications.</p>
+                <button>See How It Works</button>
+            </div>
+            <div class="how-it-works-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.nGZu_Osz8FZz0wFLQnqboAHaEK&pid=Api&P=0&h=180" alt="Card 3 Image">
+                <h3>Feature 3</h3>
+                <p>Learn about Feature 3 and its impact on your analysis.</p>
+                <button>See How It Works</button>
+            </div>
+        </div>
+    </section>
+
     <section id="prediction" class="fullscreen-section">
         <div class="prediction-container">
             <h2>Predict Economic Indicators</h2>
@@ -83,79 +124,95 @@
                         <option value="" disabled selected>*Select a Model</option>
                         <option value="RandomForest">RandomForest</option>
                         <option value="ARIMA">ARIMA</option>
-                        <option value="model3">Model 3</option>
+                        <option value="LSTM">LSTM</option>
+                        <option value="RNN">RNN</option>
                     </select>
                 </div>
                     <button type="submit" class="predictbtn">Predict</button>
             </form>
         </div>
     </section>
-
-
-
-
-    <section id="about" class="fullscreen-section">
-        <div class="about-container">
-            <div class="about-text">
-                <h2>About Us</h2>
-                <p>We are a passionate team dedicated to providing innovative solutions for economic forecasting and analysis. Our mission is to make complex economic data accessible and understandable for everyone.</p>
-                <p>With years of experience in the field, we strive to deliver accurate predictions and valuable insights to help businesses and individuals make informed decisions.</p>
-            </div>
-            <div class="about-image">
-                <!-- Add a decorative image here -->
-                <img src="http://www.albawaba.com/sites/default/files/im/Business/Job_Market_Success/teamwork-hands-shutterstock_288464495.jpg" alt="About Us Image">
-            </div>
-        </div>
-    </section>
-
     
+    <style>
+        .vertical-split {
+            display: flex;
+            justify-content: space-between;
+        }
     
-    <section id="how-it-works" class="fullscreen-section">
-        <div class="how-it-works-cards">
-            <div class="how-it-works-card">
-                <img src="https://www.datascienceblog.net/post/data-visualization/lineplot_files/figure-html/unnamed-chunk-4-1.png" alt="Card 1 Image">
-                <h3>Feature 1</h3>
-                <p>Discover how Feature 1 works and its benefits.</p>
-                <button>See How It Works</button>
-            </div>
-            <div class="how-it-works-card">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.zZW05tRauWstK89Elvq23gHaEK&pid=Api&P=0&h=180" alt="Card 2 Image">
-                <h3>Feature 2</h3>
-                <p>Explore Feature 2 and its applications.</p>
-                <button>See How It Works</button>
-            </div>
-            <div class="how-it-works-card">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.nGZu_Osz8FZz0wFLQnqboAHaEK&pid=Api&P=0&h=180" alt="Card 3 Image">
-                <h3>Feature 3</h3>
-                <p>Learn about Feature 3 and its impact on your analysis.</p>
-                <button>See How It Works</button>
-            </div>
-        </div>
-    </section>
+        .references-half,
+        .sources-half {
+            width: 50%; /* Adjust the width as needed */
+            margin-right: 0%; /* Adjust the margin as needed */
+            margin: 0px 60px;
+        }
+    </style>
     
     <section id="References" class="fullscreen-section">
-        <ul class="references-list">
-            <li>
-                <span class="reference-title"><a href="research_paper1.pdf" target="_blank">Research Paper 1</a></span>
-                <span class="reference-author">by Author 1</span>
-            </li>
-            <li>
-                <span class="reference-title"><a href="research_paper2.pdf" target="_blank">Research Paper 2</a></span>
-                <span class="reference-author">by Author 2</span>
-            </li>
-            <!-- Add more references as needed -->
-        </ul>
+        <div class="vertical-split">
+            <div class="references-half">
+                <h2>References</h2>
+                <ul class="references-list">
+                    <li>
+                        <span class="reference-title"><a href="research_paper1.pdf" target="_blank">Research Paper 1</a></span>
+                        <span class="reference-author">by Author 1</span>
+                    </li>
+                    <li>
+                        <span class="reference-title"><a href="research_paper2.pdf" target="_blank">Research Paper 2</a></span>
+                        <span class="reference-author">by Author 2</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="sources-half">
+                <h2>Sources</h2>
+                <ul class="sources-list">
+                    <li>
+                        <span class="source-title"><a href="source1.pdf" target="_blank">National Association of Software and Services Companies (NASSCOM)</a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">The International Telecommunication Union (ITU),The World Bank</a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">Ministry of Tourism (MoT), the Federation of Indian Chambers of Commerce and Industry (FICCI)</a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">Society of Indian Automobile Manufacturers (SIAM)
+                        </a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">The Indian Pharmaceutical Alliance (IPA)
+                        </a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">Annual Building Construction Cost Index from 1981 to 2022
+
+                        </a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">Petroleum Planning and Analysis Cell (PPAC) of the Ministry of Petroleum and Natural Gas (MoPNG), Government of India
+                        </a></span>
+                    </li>
+                    <li>
+                        <span class="source-title"><a href="source2.pdf" target="_blank">Central Electricity Authority of India (CEA)
+                        </a></span>
+                    </li>
+                    <!-- Add more sources as needed -->
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="fullscreen-section">
+
     </section>
     
     
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="footer_logo.png" alt="Company Logo">
+                <img src="{{ url_for('static', filename='contents/companylogo.png') }}" alt="Company Logo" style="max-width: 150px;">
             </div>
             <div class="footer-info">
-                <p>&copy; 2023 Your Company. All rights reserved.</p>
-                <p>Contact: contact@yourcompany.com</p>
+                <p>&copy; 2023 EconVisor. All rights reserved.</p>
+                <p>Contact: predictwithecon@blackbox.com</p>
             </div>
             <div class="social-icons">
                 <a href="#"><img src="facebook_icon.png" alt="Facebook"></a>

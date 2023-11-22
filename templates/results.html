@@ -26,6 +26,13 @@
                 </div>
             </div>
             <div class="half">
+                <div class="logo" style="display: flex;">
+                    <img src="{{ url_for('static', filename='contents/companylogo.png') }}" alt="Company Logo" style="
+                        max-width: 250px;
+                        margin: auto;
+                        opacity: 90%;
+                    ">
+                </div>
                 <div class="text">
                     {% for key, values in predictions.items() %}
                         <p name="{{ key }}" id="{{ key }}">
@@ -33,6 +40,7 @@
                         </p>
                     {% endfor %}
                 </div>
+                <button id="homeButton" onclick="redirectToHome()">Home</button>
             </div>
         </div>
     </section>
@@ -105,8 +113,29 @@ font-family: 'Comfortaa', sans-serif;
     width: fit-content;
   font-family: 'Comfortaa', sans-serif;
 }
+#homeButton
+{
+    background-color: #3b00b5;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 21px;
+    border-radius: 5px;
+    width: fit-content;
+  font-family: 'Comfortaa', sans-serif;
+}
+#homeButton:hover{
+    background-color: #5a2db4; 
+  border: 1px solid #9466f1;
+  box-shadow: 0px 0px 20px 2px #9466f1;
+}
           </style>
 <script>
+        function redirectToHome() {
+            window.location.href = "{{ url_for('economic_predictor') }}";
+        }
+
     document.getElementById('downloadRep').addEventListener('click', function() {
         // Change background color to white before capturing the content
         document.querySelector('.content-container').style.backgroundColor = 'white';

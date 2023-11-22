@@ -83,7 +83,7 @@ class ARIMAModel:
         new_df = pd.DataFrame({self.dataframe.columns[self.column_index]: self.dataframe.iloc[:, self.column_index].values},
                               index=self.dataframe.index)
         
-        train_size = int(0.6 * len(new_df))
+        train_size = int(0.9375 * len(new_df))
         train_df, _ = new_df[:train_size], new_df[train_size:]
         print(train_df.index[-1])
 
@@ -121,33 +121,13 @@ class ARIMAModel:
             perc_change = f"{perc_change:.2f}%"
         return value.round(3), perc_change
     
-    def plot_data_with_prediction(self, target_index, xl, yl, year, quarter, predicted_value):
-        # Use a dark theme
-        plt.style.use('dark_background')
-
-        # Plot historical data
-        plt.figure(figsize=(10, 6))
-        plt.plot(self.dataframe.index, self.dataframe[self.dataframe.columns[target_index]], label='Historical Data', marker='o', color='lightblue', linestyle='-')
-
-        future_date = self.convert_to_datetime(year, quarter)
-
-        plt.scatter(future_date, predicted_value, color='red', label='Predicted Future Value', zorder=5)
-
-        # Annotate the predicted value on the plot
-        plt.text(future_date, predicted_value, f'{predicted_value:.2f}', color='red', ha='left', va='bottom', fontsize=10, bbox=dict(facecolor='black', edgecolor='none', boxstyle='round,pad=0.3'))
-
-        # Customize plot aesthetics
-        plt.title(xl, fontsize=14, color='white')
-        plt.xlabel('Year', fontsize=12, color='white')
-        plt.ylabel(yl, fontsize=12, color='white')
-        plt.legend(fontsize=10)
-        plt.grid(True, color='gray', linestyle='--', alpha=0.5)
-
-        # Customize tick parameters
-        plt.tick_params(axis='both', which='both', colors='white')
-        return plt.gcf()
-
-    def create_and_save_plot(self, target_index, xl, yl, save_path, year, quarter, predicted_value):
-        plot = self.plot_data_with_prediction(target_index, xl, yl, year=year, quarter=quarter, predicted_value=predicted_value)
-        plot.savefig(save_path)
-        plt.close() 
+def convert_to_datetime(year, quarter):
+    # Map quarter to the corresponding month
+    year = int(year)
+    quarter = int(quarter[-1])
+    month = (quarter - 1) * 3 + 1
+    
+    # Create a datetime object for the first day of the quarter
+    datetime_object = datetime(year, month, 1, 0, 0, 0)
+    
+    return datetime_object
