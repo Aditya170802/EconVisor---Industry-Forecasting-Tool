@@ -15,10 +15,17 @@ class ARIMAModel:
     def process_dataset(self, file):
         df = pd.read_csv(file)
         df.iloc[:, 0] = pd.to_datetime(df.iloc[:, 0])
-        for i in range(1, 5):
-            if df.iloc[:, i].dtype == 'object':
-                df.iloc[:, i] = df.iloc[:, i].str.replace(',', '')
-            df.iloc[:, i] = df.iloc[:, i].astype(float)
+
+        if(len(df.columns)>2):
+            for i in range(1, 5):
+                if df.iloc[:, i].dtype == 'object':
+                    df.iloc[:, i] = df.iloc[:, i].str.replace(',', '')
+                df.iloc[:, i] = df.iloc[:, i].astype(float)
+        else:
+            if df.iloc[:, 1].dtype == 'object':
+                df.iloc[:, 1] = df.iloc[:, 1].str.replace(',', '')
+            df.iloc[:, 1] = df.iloc[:, 1].astype(float)
+
         df.set_index(df.columns[0], inplace=True)
         return df
 

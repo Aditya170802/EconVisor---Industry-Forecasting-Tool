@@ -103,3 +103,47 @@ document.addEventListener("DOMContentLoaded", function () {
     // Call the function initially to set the initial state
     updateSubsectors();
 });
+
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "flex";
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+}
+
+// Close modal if clicked outside the content
+window.onclick = function(event) {
+    if (event.target.className === 'modal') {
+        event.target.style.display = "none";
+    }
+}
+
+
+function startLoading() {
+    $("#loading-screen").show();
+    $("#loading-text").text("Training model...");
+
+    // Perform an asynchronous request to the Flask route
+    $.ajax({
+        type: "POST",
+        url: "/calculate",
+        data: $("#prediction-form").serialize(),
+        success: function(response) {
+            // Update the loading text
+            $("#loading-text").text("Predicting...");
+
+            // Simulate additional delay for demonstration purposes
+            setTimeout(function() {
+                $("#loading-screen").hide();
+                $("#result").show().html("Result: " + response.result);
+            }, 2000);
+        },
+        error: function() {
+            // Handle errors
+            $("#loading-text").text("Error occurred.");
+        }
+    });
+}

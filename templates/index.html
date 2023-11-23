@@ -50,6 +50,9 @@
                 <h2 style="color: #c3ff019e;">About Us</h2>
                 <p>We are a passionate team dedicated to providing innovative solutions for economic forecasting and analysis. Our mission is to make complex economic data accessible and understandable for everyone.</p>
                 <p>With years of experience in the field, we strive to deliver accurate predictions and valuable insights to help businesses and individuals make informed decisions.</p>
+                <p>
+                    The EconVisor application, designed for interactive time series analysis, aims to empower a wide range of users, including policymakers, business leaders, and analysts, by predicting crucial economic indicators such as GDP, inflation, and unemployment. The tool enables users to customize forecasts based on industry type and future timelines, fostering granular insights essential for strategic decision-making in policy formulation, investment strategies, and resource allocation.
+                </p>
             </div>
             <div class="about-image">
                 <!-- Add a decorative image here -->
@@ -62,22 +65,50 @@
     <section id="how-it-works" class="fullscreen-section">
         <div class="how-it-works-cards">
             <div class="how-it-works-card">
-                <img src="https://www.datascienceblog.net/post/data-visualization/lineplot_files/figure-html/unnamed-chunk-4-1.png" alt="Card 1 Image">
-                <h3>Feature 1</h3>
-                <p>Discover how Feature 1 works and its benefits.</p>
-                <button>See How It Works</button>
+                <img src="{{ url_for('static', filename='contents/dataprep.png') }}">
+                <h3>Data Collection & Preprocessing</h3>
+                <p>This phase involves gathering and preparing the raw data for analysis. It includes tasks such as cleaning the data, handling missing values, and transforming the data into a suitable format for model training.</p>
+                <button onclick="openModal('modal1')">See How It Works</button>
             </div>
+            
             <div class="how-it-works-card">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.zZW05tRauWstK89Elvq23gHaEK&pid=Api&P=0&h=180" alt="Card 2 Image">
-                <h3>Feature 2</h3>
-                <p>Explore Feature 2 and its applications.</p>
-                <button>See How It Works</button>
+                <img src="{{ url_for('static', filename='contents/modelsel.jpg') }}">
+                <h3>Model Selection & Tuning</h3>
+                <p>In this stage, the appropriate machine learning model is chosen based on the nature of the problem. The model is then fine-tuned to achieve optimal performance, considering the dataset.</p>
+                <button onclick="openModal('modal2')">See How It Works</button>
             </div>
+            
             <div class="how-it-works-card">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.nGZu_Osz8FZz0wFLQnqboAHaEK&pid=Api&P=0&h=180" alt="Card 3 Image">
-                <h3>Feature 3</h3>
-                <p>Learn about Feature 3 and its impact on your analysis.</p>
-                <button>See How It Works</button>
+                <img src="{{ url_for('static', filename='contents/predicn.png') }}">
+                <h3>Model Training & Prediction</h3>
+                <p>This step involves training the selected model on the prepared data. Once trained, the model can make predictions on new, unseen data. This phase is crucial for the deployment of the machine learning solution.</p>
+                <button onclick="openModal('modal3')">See How It Works</button>
+            </div>
+            
+        </div>
+        
+        <!-- Modals -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')">&times;</span>
+                <img src="{{ url_for('static', filename='contents/Process_flowchart.png') }}" alt="Flowchart 1">
+                <img src="{{ url_for('static', filename='contents/Process_flowchart.png') }}" alt="Flowchart 2">
+            </div>
+        </div>
+        
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')">&times;</span>
+                <img src="{{ url_for('static', filename='contents/output.png') }}" alt="Flowchart 3">
+                <img src="{{ url_for('static', filename='contents/Process_flowchart.png') }}" alt="Flowchart 4">
+            </div>
+        </div>
+        
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal3')">&times;</span>
+                <img src="{{ url_for('static', filename='contents/Process_flowchart_prediction.png') }}" alt="Flowchart 5">
+                <img src="{{ url_for('static', filename='contents/EconVisor Report (8).png') }}" alt="Flowchart 6">
             </div>
         </div>
     </section>
@@ -131,8 +162,9 @@
                     <button type="submit" class="predictbtn">Predict</button>
             </form>
         </div>
+
     </section>
-    
+
     <style>
         .vertical-split {
             display: flex;
@@ -153,14 +185,39 @@
                 <h2>References</h2>
                 <ul class="references-list">
                     <li>
-                        <span class="reference-title"><a href="research_paper1.pdf" target="_blank">Research Paper 1</a></span>
-                        <span class="reference-author">by Author 1</span>
+                        <span class="reference-title"><a href="https://www.frontiersin.org/articles/10.3389/frai.2021.757864" target="_blank">Forecasting GDP using machine learning: A comparison of different models</a></span>
+                        <span class="reference-author">by Giovanni Maccarrone, Giacomo Morelli, and Sara Spadaccini</span>
                     </li>
                     <li>
-                        <span class="reference-title"><a href="research_paper2.pdf" target="_blank">Research Paper 2</a></span>
-                        <span class="reference-author">by Author 2</span>
+                        <span class="reference-title"><a href="https://core.ac.uk/download/pdf/38047645.pdf" target="_blank">GDP Forecasting: A Literature Review</a></span>
+                        <span class="reference-author">by Topi Tjukanov</span>
+                    </li>
+                    <li>
+                        <span class="reference-title"><a href="https://www.economicshelp.org/blog/1976/economics/importance-of-economic-forecasts/" target="_blank">The Importance of Economic Forecasting for Business Decisions</a></span>
+                        <span class="reference-author">by International Monetary Fund</span>
+                    </li>
+                    <li>
+                        <span class="reference-title"><a href="https://www.sciencedirect.com/science/article/abs/pii/B9780444536839000050" target="_blank">The Role of Economic Forecasting in Government Policy Making</a></span>
+                        <span class="reference-author">by Volker Wieland and Maik Wolters</span>
+                    </li>
+                    <li>
+                        <span class="reference-title"><a href="https://scholar.harvard.edu/files/stock/files/time_series_economic_forecasting.pdf" target="_blank">Time Series Analysis and Forecasting in Economics</a></span>
+                        <span class="reference-author">by Brockwell and Davis</span>
+                    </li>
+                    <li>
+                        <span class="reference-title">Time series Forecasting Using ARIMA model</span>
+                        <span class="reference-author">by Ayat Hamel and Baydaa Ismael (Year 2022)</span>
+                    </li>
+                    <li>
+                        <span class="reference-title"><a href="#" target="_blank">Random Forest with Time Series</a></span>
+                        <span class="reference-author">by Yigit Aydede (Year 2023)</span>
+                    </li>
+                    <li>
+                        <span class="reference-title">Box-Jenkins: Time Series Analysis Forecasting and Control</span>
+                        <span class="reference-author">by George E. P. Box, Gwilym M. Jenkins, and Graeme C. Reinsel (Year 1994)</span>
                     </li>
                 </ul>
+                
             </div>
             <div class="sources-half">
                 <h2>Sources</h2>
@@ -201,7 +258,25 @@
         </div>
     </section>
     <section id="contact" class="fullscreen-section">
-
+        <div class="contact-form">
+            <img src="{{ url_for('static', filename='contents/companylogo.png') }}" alt="Company Logo" class="logo">
+            <form id="contform" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
     </section>
     
     
@@ -223,6 +298,8 @@
     </footer>
     
     
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

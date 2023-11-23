@@ -10,6 +10,7 @@
     <title>Prediction Report</title>
 </head>
 <body style=" background-color: #161616;">
+    <div class="prediction-res">
     <section id="prediction-results" class="fullscreen-section infographics">
         <div class="title" style="color: beige;">
             <h2>The Prediction Infographics</h2>
@@ -18,12 +19,16 @@
         <button id="downloadRep"><i class="fas fa-download"></i> Save Report</button>
         <div class="content-container">
             <div class="half">
+                {% if predictions|length>2 %}
                 <div class="chart">
                     <img src="{{ url_for('static', filename='ReportPlots/Production (Number).png') }}" alt="Infographic chart">
                     <img src="{{ url_for('static', filename='ReportPlots/Employment.png') }}" alt="Infographic chart">
                     <img src="{{ url_for('static', filename='ReportPlots/GDP Contribution.png') }}" alt="Infographic chart">
                     <img src="{{ url_for('static', filename='ReportPlots/Economy (Revenues).png') }}" alt="Infographic chart">
                 </div>
+                {% else %}
+                <img src="{{ url_for('static', filename='ReportPlots/GDP.png') }}" alt="Infographic chart">
+                {% endif %}
             </div>
             <div class="half">
                 <div class="logo" style="display: flex;">
@@ -44,7 +49,7 @@
             </div>
         </div>
     </section>
-    
+</div>
           <style>
 .fullscreen-section {
     height: 100vh; /* Make this section cover the whole screen */
@@ -138,17 +143,17 @@ font-family: 'Comfortaa', sans-serif;
 
     document.getElementById('downloadRep').addEventListener('click', function() {
         // Change background color to white before capturing the content
-        document.querySelector('.content-container').style.backgroundColor = 'white';
-        document.querySelector('.text').style.color = 'black';
+        // document.querySelector('.content-container').style.backgroundColor = 'white';
+        // document.querySelector('.text').style.color = 'black';
 
-        html2canvas(document.querySelector('.content-container'), {
+        html2canvas(document.querySelector('.prediction-res'), {
             onrendered: function(canvas) {
                 var customName = 'EconVisor Report'; // Specify your custom image name here
                 Canvas2Image.saveAsPNG(canvas, canvas.width, canvas.height, customName);
 
                 // Revert the background color after downloading
-                document.querySelector('.content-container').style.backgroundColor = ''; // or set it to the original color
-                document.querySelector('.text').style.color = ''; // or set it to the original color
+                // document.querySelector('.content-container').style.backgroundColor = ''; // or set it to the original color
+                // document.querySelector('.text').style.color = ''; // or set it to the original color
             }
         });
     });

@@ -24,94 +24,169 @@ def predict_economic_data(form_data):
     if industry_type!='India':
         file=f'EconVisor---Industry-Forecasting-Tool/Datasets/{industry_type}/{subsector}.csv'
     else:
-        file=f'EconVisor---Industry-Forecasting-Tool/Datasets/{industry_type}.csv'
+        file=f'EconVisor---Industry-Forecasting-Tool/Datasets/India/{industry_type}.csv'
 
     xl1 = file.split('/')[-1].split('.')[0]
     features = pd.read_csv(file).columns
 
     if selected_model == 'RandomForest':
-        linear_reg_predictor = RFPredictor(file=file)
-        future_date_str = f'{year}-{quarter}'
-        predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
-        imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
+        if industry_type!='India':
+            linear_reg_predictor = RFPredictor(file=file)
+            future_date_str = f'{year}-{quarter}'
+            predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
+            imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
 
-        for i in range(1, 5):
-            predicted_value, perc = linear_reg_predictor.predict_future_value(future_date_str, i)
-            key = list(predictions.keys())[i-1]
+            for i in range(1, 5):
+                predicted_value, perc = linear_reg_predictor.predict_future_value(future_date_str, i)
+                key = list(predictions.keys())[i-1]
+                predictions[key][0] = predicted_value
+                predictions[key][1] = perc
+                xl = f'{xl1} {key} Forecast Plot'
+                yl = f'{key}'
+                plot_data_with_prediction(dataframe = linear_reg_predictor.process_dataset(file), 
+                    save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
+                    target_index=i-1, xl=xl, yl=yl, 
+                    year=year, quarter=quarter, 
+                    predicted_value=predicted_value
+                )
+        else: 
+            linear_reg_predictor = RFPredictor(file=file)
+            future_date_str = f'{year}-{quarter}'
+            predictions = {f'{features[1]}': [0, 0]}
+            imgs_names = ['GDP']
+
+            predicted_value, perc = linear_reg_predictor.predict_future_value(future_date_str, 1)
+            key = list(predictions.keys())[0]
             predictions[key][0] = predicted_value
             predictions[key][1] = perc
             xl = f'{xl1} {key} Forecast Plot'
             yl = f'{key}'
             plot_data_with_prediction(dataframe = linear_reg_predictor.process_dataset(file), 
-                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
-                target_index=i-1, xl=xl, yl=yl, 
+                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[0]}.png',
+                target_index=0, xl=xl, yl=yl, 
                 year=year, quarter=quarter, 
                 predicted_value=predicted_value
             )
 
+
+
         return predictions
 
     elif selected_model == 'ARIMA':
-        predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
-        imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
-        for i in range(1, 5):
-            arima_model_instance = ARIMAModel(file, i)
+        if industry_type!='India':
+            predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
+            imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
+            for i in range(1, 5):
+                arima_model_instance = ARIMAModel(file, i)
+                predicted_value, perc = arima_model_instance.forecast_data(year, quarter)
+                key = list(predictions.keys())[i-1]
+                predictions[key][0] = predicted_value
+                predictions[key][1] = perc
+                xl = f'{xl1} {key} Forecast Plot'
+                yl = f'{key}'
+                plot_data_with_prediction(dataframe = arima_model_instance.process_dataset(file), 
+                    save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
+                    target_index=i-1, xl=xl, yl=yl, 
+                    year=year, quarter=quarter, 
+                    predicted_value=predicted_value
+                )
+        else:
+            predictions = {f'{features[1]}': [0, 0]}
+            imgs_names = ['GDP']
+            arima_model_instance = ARIMAModel(file, 1)
             predicted_value, perc = arima_model_instance.forecast_data(year, quarter)
-            key = list(predictions.keys())[i-1]
+            key = list(predictions.keys())[0]
             predictions[key][0] = predicted_value
             predictions[key][1] = perc
             xl = f'{xl1} {key} Forecast Plot'
             yl = f'{key}'
             plot_data_with_prediction(dataframe = arima_model_instance.process_dataset(file), 
-                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
-                target_index=i-1, xl=xl, yl=yl, 
+                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[0]}.png',
+                target_index=0, xl=xl, yl=yl, 
                 year=year, quarter=quarter, 
                 predicted_value=predicted_value
-            )
+                )
 
         return predictions
     
     elif selected_model == 'LSTM':
-        predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
-        imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
-        for i in range(1, 5):
-            lstm_model_instance = TimeSeriesPredictor(file, i)
+        if industry_type!='India':
+            predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
+            imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
+            for i in range(1, 5):
+                lstm_model_instance = TimeSeriesPredictor(file, i)
+                lstm_model_instance.preprocess_data()
+                predicted_value, perc = lstm_model_instance.forecast_data(year, quarter)
+                key = list(predictions.keys())[i-1]
+                predictions[key][0] = predicted_value
+                predictions[key][1] = perc
+                xl = f'{xl1} {key} Forecast Plot'
+                yl = f'{key}'
+                plot_data_with_prediction(dataframe = lstm_model_instance.process_dataset(file), 
+                    save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
+                    target_index=i-1, xl=xl, yl=yl, 
+                    year=year, quarter=quarter, 
+                    predicted_value=predicted_value
+                )
+        else:
+            predictions = {f'{features[1]}': [0, 0]}
+            imgs_names = ['GDP']
+            lstm_model_instance = TimeSeriesPredictor(file, 1)
             lstm_model_instance.preprocess_data()
             predicted_value, perc = lstm_model_instance.forecast_data(year, quarter)
-            key = list(predictions.keys())[i-1]
+            key = list(predictions.keys())[0]
             predictions[key][0] = predicted_value
             predictions[key][1] = perc
             xl = f'{xl1} {key} Forecast Plot'
             yl = f'{key}'
             plot_data_with_prediction(dataframe = lstm_model_instance.process_dataset(file), 
-                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
-                target_index=i-1, xl=xl, yl=yl, 
+                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[0]}.png',
+                target_index=0, xl=xl, yl=yl, 
                 year=year, quarter=quarter, 
                 predicted_value=predicted_value
-            )
+                )
 
         return predictions
     
 
 
     elif selected_model == 'RNN':
-        predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
-        imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
-        for i in range(1, 5):
-            rnn_instance = RNNPredictor(file, i)
+        if industry_type!='India':
+            predictions = {f'{features[1]}': [0, 0], f'{features[2]}': [0, 0], f'{features[3]}': [0, 0], f'{features[4]}': [0, 0]}
+            imgs_names = ['Production (Number)','Economy (Revenues)','Employment','GDP Contribution']
+            for i in range(1, 5):
+                rnn_instance = RNNPredictor(file, i)
+                rnn_instance.preprocess_data()
+                predicted_value, perc = rnn_instance.forecast_data(year, quarter)
+                key = list(predictions.keys())[i-1]
+                predictions[key][0] = predicted_value
+                predictions[key][1] = perc
+                xl = f'{xl1} {key} Forecast Plot'
+                yl = f'{key}'
+                plot_data_with_prediction(dataframe = rnn_instance.process_dataset(file), 
+                    save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
+                    target_index=i-1, xl=xl, yl=yl, 
+                    year=year, quarter=quarter, 
+                    predicted_value=predicted_value
+                )
+        else:
+            predictions = {f'{features[1]}': [0, 0]}
+            imgs_names = ['GDP']
+
+            rnn_instance = RNNPredictor(file, 1)
             rnn_instance.preprocess_data()
             predicted_value, perc = rnn_instance.forecast_data(year, quarter)
-            key = list(predictions.keys())[i-1]
+            key = list(predictions.keys())[0]
             predictions[key][0] = predicted_value
             predictions[key][1] = perc
             xl = f'{xl1} {key} Forecast Plot'
             yl = f'{key}'
             plot_data_with_prediction(dataframe = rnn_instance.process_dataset(file), 
-                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[i-1]}.png',
-                target_index=i-1, xl=xl, yl=yl, 
+                save_path=f'EconVisor---Industry-Forecasting-Tool/Static/ReportPlots/{imgs_names[0]}.png',
+                target_index=0, xl=xl, yl=yl, 
                 year=year, quarter=quarter, 
                 predicted_value=predicted_value
-            )
+                )
 
         return predictions
 
