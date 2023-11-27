@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Define subsectors for each major sector (customize as needed)
     const subsectors = {
-        Agriculture: ["Agriculture Overall", "Subsector A1", "Subsector A2", "Subsector A3"],
-        Service: ['Service Overall', 'BPO', 'Information technology', 'Retail', 'Telecommunications', 'Tourism'],
+        Agriculture: ["Agriculture Overall", "Fishing", "Livestock", "Horticulture", "Tea", "Wheat", "Rice", "Forestry"],
+        Service: ['Service Overall', 'BPO', 'Information technology', 'Retail', 'Telecommunications', 'Tourism', 'Financial Services', 'Hotels and Resturants'],
         Manufacturing: ['Manufacturing Overall', 'Automobiles',
         'Chemicals',
         'Constuction',
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         'Pharmaceuticals',
         'Steel',
         'Textiles'],
-        Others: ["Other as Whole", "Subsector O1", "Subsector O2", "Subsector O3"],
+        Others: ["Legal Services", "Movies", "Music"]
     };
 
     // Function to update subsector options
@@ -122,28 +122,3 @@ window.onclick = function(event) {
 }
 
 
-function startLoading() {
-    $("#loading-screen").show();
-    $("#loading-text").text("Training model...");
-
-    // Perform an asynchronous request to the Flask route
-    $.ajax({
-        type: "POST",
-        url: "/calculate",
-        data: $("#prediction-form").serialize(),
-        success: function(response) {
-            // Update the loading text
-            $("#loading-text").text("Predicting...");
-
-            // Simulate additional delay for demonstration purposes
-            setTimeout(function() {
-                $("#loading-screen").hide();
-                $("#result").show().html("Result: " + response.result);
-            }, 2000);
-        },
-        error: function() {
-            // Handle errors
-            $("#loading-text").text("Error occurred.");
-        }
-    });
-}
