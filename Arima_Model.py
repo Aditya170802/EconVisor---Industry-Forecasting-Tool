@@ -128,6 +128,13 @@ class ARIMAModel:
             perc_change = f"{perc_change:.2f}%"
         return value.round(3), perc_change
     
+    def print_model_summary(self, trained_model):
+        # Print the summary of the ARIMA model
+        if trained_model is not None:
+            print(trained_model.summary())
+        else:
+            print("Model not trained yet. Call train_arima_model method first.")
+    
 def convert_to_datetime(year, quarter):
     # Map quarter to the corresponding month
     year = int(year)

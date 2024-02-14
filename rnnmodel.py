@@ -8,7 +8,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 class RNNPredictor:
-    def __init__(self, file, selected_column, seq_length=3, epochs=100, batch_size=1):
+    def __init__(self, file, selected_column, seq_length=3, epochs=20, batch_size=4):
         self.file = file
         self.selected_column = selected_column - 1
         self.seq_length = seq_length
